@@ -1,0 +1,43 @@
+.layout{
+    background-color: white;
+    width: 550px;
+    display: flex;
+}
+
+.leftLayout{
+    flex: 1;
+    padding: 20px;
+}
+.centerLayout{
+    flex: 5;
+    padding: 10px;
+}
+.rightLayout{
+    flex: 1;
+}
+.studentImage{
+    border: 0.5px solid #dbdbdb;
+    border-radius: 60px;
+    width: 80px;
+    height: 80px;
+    overflow: hidden;
+}
+.studentName{
+    font-weight: 700;
+    font-size: x-large;
+    text-transform: uppercase;
+}
+.otherInfo{
+    margin-left: 10px;
+    color: grey;
+}
+.iconClass{
+    font-size: 40px;
+    font-weight: 700;
+    color: grey;
+    cursor: pointer;
+    user-select: none;
+}
+.testMarks{
+    margin-top: 15px;
+}
