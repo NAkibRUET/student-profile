@@ -1,0 +1,10 @@
+.studentList{
+  background-color: white;
+  padding: 0px 5px;
+  width:550px;
+  height: 450px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-radius: 5px;
+  box-shadow: 1px 1px 4px 0px rgba(71,71,71,0.75);
+}

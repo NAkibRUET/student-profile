@@ -40,4 +40,23 @@
 }
 .testMarks{
     margin-top: 15px;
+    margin-bottom: 10px;
+}
+.addTagDiv{
+    width: 100px;
+}
+.addTagInput{
+    font-size: 11px;
+    padding-left: 0;
+}
+.tagItems{
+    background-color: #dbd6d6;
+    padding: 4px 8px;
+    color: black;
+    margin-right: 5px;
+    border-radius: 3px;
+    box-shadow: 0px 0px 2px 0px rgba(148, 147, 147, 0.75);
+}
+.tagArea{
+    margin-top: 10px;
 }

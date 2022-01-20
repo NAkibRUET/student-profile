@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { IStudent } from '../../DataSource/GetStudentsData';
 import './style.css';
 
-function calculateAverage(grades: String[]): number{
+export function calculateAverage(grades: String[]): number{
     let sum:number = 0;
     for(let i=0; i<grades.length; i++){
         let num:number = Number(grades[i]);
@@ -12,10 +12,18 @@ function calculateAverage(grades: String[]): number{
     return sum / grades.length;
 }
 
-export const StudentComponent = (props:{ student : IStudent}) => {
+export const StudentComponent = (props:{ student : IStudent, addtag:(id:string, name:string) => void}) => {
     const [isExpanded, setExpand] = useState(false);
     const { student } = props;
-
+    const tagList = student.tags? student.tags:[];
+    const [newTagName, setNewTagName] = useState("");
+    const onTagSubmit=(event:React.FormEvent<HTMLFormElement>)=>{
+        event.preventDefault();
+        // Checking if the tag already exist in the list
+        if(tagList.findIndex(e=> e === newTagName) === -1)
+            props.addtag(student.id, newTagName);
+        setNewTagName("");
+    }
     return (
         <>
             <div className="layout">
@@ -26,7 +34,7 @@ export const StudentComponent = (props:{ student : IStudent}) => {
                 </div>
                 
                 <div className='centerLayout'>
-                    <span className='studentName'>{student.firstName} {student.lastName}</span>
+                    <span data-testid="studentName" className='studentName'>{student.firstName} {student.lastName}</span>
                     <div className='otherInfo'>
                         <h6>Email: {student.email}</h6>
                         <h6>Company: {student.company}</h6>
@@ -45,6 +53,15 @@ export const StudentComponent = (props:{ student : IStudent}) => {
                             </div>
                             : null
                         }
+                        
+                        <h6 className='tagArea'>{tagList.map((item, index)=>{
+                            return <span key={index} className='tagItems'>{item}</span>;
+                        })}</h6>
+                        <form onSubmit={(e)=> onTagSubmit(e)}>
+                            <div className='addTagDiv'>
+                                <input required className='addTagInput' type="text" placeholder='Add Tags' value={newTagName} onChange={(e)=> setNewTagName(e.target.value)}/>
+                            </div>
+                        </form>
                     </div>
                     
                 </div>
